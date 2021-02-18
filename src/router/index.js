@@ -1,28 +1,41 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import PageHome from '../pages/PageHome'
-import PageThreadShow from '../pages/PageThreadShow'
-import PageNotFound from '../pages/PageNotFound'
+import Home from '@/pages/PageHome'
+import ThreadShow from '@/pages/PageThreadShow'
+import Category from '@/pages/PageCategory'
+import Forum from '@/pages/PageForum'
+import NotFound from '@/pages/PageNotFound'
 
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'PageHome',
-      component: PageHome
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/category/:id',
+      name: 'Category',
+      component: Category,
+      props: true
+    },
+    {
+      path: '/forum/:id',
+      name: 'Forum',
+      component: Forum,
+      props: true
     },
     {
       path: '/thread/:id',
       name: 'ThreadShow',
-      component: PageThreadShow,
+      component: ThreadShow,
       props: true
     },
     {
       path: '*',
       name: 'NotFound',
-      component: PageNotFound
+      component: NotFound
     }
   ],
   mode: 'history'
